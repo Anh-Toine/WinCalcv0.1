@@ -23,6 +23,7 @@ namespace WinCalcv0._1
         public MainWindow()
         {
             InitializeComponent();
+            //Comment
         }
     }
 }
