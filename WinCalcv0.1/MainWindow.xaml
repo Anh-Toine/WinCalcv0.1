@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WinCalcv0._1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="531" Width="383.333">
+        ResizeMode="NoResize"
+        Title="TSCalc" Height="531" Width="337.667">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -22,24 +23,29 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Label  Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Height="141" Width="377" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="0,0,-0.333,0"/>
-        <Button Style="{StaticResource btn}" Content="AC" Grid.Column="0" Grid.Row="2" Margin="6,6.333,5.667,6" />
-        <Button Style="{StaticResource btn}" Content="+/-" Grid.Column="1" Grid.Row="2" Margin="6.333,6.333,6,6" />
-        <Button Style="{StaticResource btn}" Content="%" Grid.Column="2" Grid.Row="2" Margin="6,6.333,5.667,6" />
-        <Button Style="{StaticResource btn}" Content="/" Grid.Column="3" Grid.Row="2" Margin="6.333,6.333,6.333,6" />
-        <Button Style="{StaticResource btn}" Content="7" Grid.Column="0" Grid.Row="3" Margin="6,6.333,5.667,6" />
-        <Button Style="{StaticResource btn}" Content="8" Grid.Column="1" Grid.Row="3" Margin="6.333,6.333,6,6" />
-        <Button Style="{StaticResource btn}" Content="9" Grid.Column="2" Grid.Row="3" Margin="6,6.333,5.667,6" />
-        <Button Style="{StaticResource btn}" Content="*" Grid.Column="3" Grid.Row="3" Margin="6.333,6.333,6.333,6" />
-        <Button Style="{StaticResource btn}" Content="4" Grid.Column="0" Grid.Row="4" Margin="6,6.333,5.667,6" />
-        <Button Style="{StaticResource btn}" Content="5" Grid.Column="1" Grid.Row="4" Margin="6.333,6.333,6,6" />
-        <Button Style="{StaticResource btn}" Content="6" Grid.Column="2" Grid.Row="4" Margin="6,6.333,5.667,6" />
-        <Button Style="{StaticResource btn}" Content="-" Grid.Column="3" Grid.Row="4" Margin="6.333,6.333,6.333,6" />
-        <Button Style="{StaticResource btn}" Content="3" Grid.Column="0" Grid.Row="5" Margin="6,6.333,5.667,6" />
-        <Button Style="{StaticResource btn}" Content="2" Grid.Column="1" Grid.Row="5" Margin="6.333,6.333,6,6" />
-        <Button Style="{StaticResource btn}" Content="1" Grid.Column="2" Grid.Row="5" Margin="6,6.333,5.667,6" />
-        <Button Style="{StaticResource btn}" Content="+" Grid.Column="3" Grid.Row="5" Margin="6.333,6.333,6.333,6" Grid.RowSpan="2"/>
-        <Button Style="{StaticResource btn}" Content="0" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" FontSize="11"/>
-        <Button Style="{StaticResource btn}" Content="." Grid.Column="2" Grid.Row="6" />
+        <TextBox x:Name="result" IsReadOnly="True" FontSize="25" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="0,0,-0.333,0.333">0</TextBox>
+        <!-- AC +/- % / -->
+        <Button x:Name="btn_ac" Style="{StaticResource contbtn}" Content="AC" Grid.Column="0" Grid.Row="2" />
+        <Button x:Name="btn_pm" Style="{StaticResource contbtn}" Content="+/-" Grid.Column="1" Grid.Row="2" />
+        <Button x:Name="btn_per" Style="{StaticResource contbtn}" Content="%" Grid.Column="2" Grid.Row="2"  />
+        <Button x:Name="btn_div" Style="{StaticResource optbtn}" Content="/" Grid.Column="3" Grid.Row="2"  />
+        <!-- 7 8 9 * -->
+        <Button x:Name="btn_7" Style="{StaticResource numberbtn}" Content="7" Grid.Column="0" Grid.Row="3" Click="commonnum_Handler"/>
+        <Button x:Name="btn_8" Style="{StaticResource numberbtn}" Content="8" Grid.Column="1" Grid.Row="3" Click="commonnum_Handler"/>
+        <Button x:Name="btn_9" Style="{StaticResource numberbtn}" Content="9" Grid.Column="2" Grid.Row="3" Click="commonnum_Handler"/>
+        <Button x:Name="btn_mul" Style="{StaticResource optbtn}" Content="*" Grid.Column="3" Grid.Row="3"  />
+        <!-- 4 5 6 - -->
+        <Button x:Name="btn_4" Style="{StaticResource numberbtn}" Content="4" Grid.Column="0" Grid.Row="4"  Click="commonnum_Handler"/>
+        <Button x:Name="btn_5" Style="{StaticResource numberbtn}" Content="5" Grid.Column="1" Grid.Row="4"  Click="commonnum_Handler"/>
+        <Button x:Name="btn_6" Style="{StaticResource numberbtn}" Content="6" Grid.Column="2" Grid.Row="4" Click="commonnum_Handler"/>
+        <Button x:Name="btn_min" Style="{StaticResource optbtn}" Content="-" Grid.Column="3" Grid.Row="4" />
+        <!-- 3 2 1 + -->
+        <Button x:Name="btn_3" Style="{StaticResource numberbtn}" Content="3" Grid.Column="0" Grid.Row="5" Click="commonnum_Handler"/>
+        <Button x:Name="btn_2" Style="{StaticResource numberbtn}" Content="2" Grid.Column="1" Grid.Row="5" Click="commonnum_Handler"/>
+        <Button x:Name="btn_1" Style="{StaticResource numberbtn}" Content="1" Grid.Column="2" Grid.Row="5"  Click="commonnum_Handler"/>
+        <Button x:Name="btn_plu" Style="{StaticResource optbtn}" Content="+" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2"/>
+        <!-- 0 . -->
+        <Button x:Name="btn_0" Style="{StaticResource numberbtn}" Content="0" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Click="commonnum_Handler" />
+        <Button x:Name="btn_dec" Style="{StaticResource numberbtn}" Content="." Grid.Column="2" Grid.Row="6" />
     </Grid>
 </Window>
