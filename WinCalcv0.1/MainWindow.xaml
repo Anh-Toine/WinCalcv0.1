@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WinCalcv0._1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="531" Width="383.333">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label  Content="Label" HorizontalAlignment="Left" VerticalAlignment="Top" Height="141" Width="377" Grid.ColumnSpan="4" Grid.RowSpan="2" Margin="0,0,-0.333,0"/>
+        <Button Style="{StaticResource btn}" Content="AC" Grid.Column="0" Grid.Row="2" Margin="6,6.333,5.667,6" />
+        <Button Style="{StaticResource btn}" Content="+/-" Grid.Column="1" Grid.Row="2" Margin="6.333,6.333,6,6" />
+        <Button Style="{StaticResource btn}" Content="%" Grid.Column="2" Grid.Row="2" Margin="6,6.333,5.667,6" />
+        <Button Style="{StaticResource btn}" Content="/" Grid.Column="3" Grid.Row="2" Margin="6.333,6.333,6.333,6" />
+        <Button Style="{StaticResource btn}" Content="7" Grid.Column="0" Grid.Row="3" Margin="6,6.333,5.667,6" />
+        <Button Style="{StaticResource btn}" Content="8" Grid.Column="1" Grid.Row="3" Margin="6.333,6.333,6,6" />
+        <Button Style="{StaticResource btn}" Content="9" Grid.Column="2" Grid.Row="3" Margin="6,6.333,5.667,6" />
+        <Button Style="{StaticResource btn}" Content="*" Grid.Column="3" Grid.Row="3" Margin="6.333,6.333,6.333,6" />
+        <Button Style="{StaticResource btn}" Content="4" Grid.Column="0" Grid.Row="4" Margin="6,6.333,5.667,6" />
+        <Button Style="{StaticResource btn}" Content="5" Grid.Column="1" Grid.Row="4" Margin="6.333,6.333,6,6" />
+        <Button Style="{StaticResource btn}" Content="6" Grid.Column="2" Grid.Row="4" Margin="6,6.333,5.667,6" />
+        <Button Style="{StaticResource btn}" Content="-" Grid.Column="3" Grid.Row="4" Margin="6.333,6.333,6.333,6" />
+        <Button Style="{StaticResource btn}" Content="3" Grid.Column="0" Grid.Row="5" Margin="6,6.333,5.667,6" />
+        <Button Style="{StaticResource btn}" Content="2" Grid.Column="1" Grid.Row="5" Margin="6.333,6.333,6,6" />
+        <Button Style="{StaticResource btn}" Content="1" Grid.Column="2" Grid.Row="5" Margin="6,6.333,5.667,6" />
+        <Button Style="{StaticResource btn}" Content="+" Grid.Column="3" Grid.Row="5" Margin="6.333,6.333,6.333,6" Grid.RowSpan="2"/>
+        <Button Style="{StaticResource btn}" Content="0" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" FontSize="11"/>
+        <Button Style="{StaticResource btn}" Content="." Grid.Column="2" Grid.Row="6" />
     </Grid>
 </Window>
