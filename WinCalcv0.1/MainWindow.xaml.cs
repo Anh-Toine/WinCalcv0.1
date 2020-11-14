@@ -20,15 +20,20 @@ namespace WinCalcv0._1
     /// </summary>
     public partial class MainWindow : Window
     {
-        double firstnum;
+        double value;
         SelectedOperator selectedOperator;
 
         public MainWindow()
         {
 
             InitializeComponent();
-
+            btn_ac.Click += new RoutedEventHandler(AC_Click);
+            btn_pm.Click += new RoutedEventHandler(PM_Click);
+            btn_per.Click += new RoutedEventHandler(PER_Click);
         }
+
+
+
         public enum SelectedOperator
         {
             PLUS,
@@ -51,16 +56,21 @@ namespace WinCalcv0._1
                 result.AppendText(btncont);
             }
         }
-        void ac_Handler(object sender,RoutedEventArgs e)
-        {
-            Button b = FindName("btn_ac") as Button;
-            b.Click += AC_Click;
-        }
+
         private void AC_Click(object sender, RoutedEventArgs e)
         {
             result.Text = "0";
         }
-        
+        private void PM_Click(object sender, RoutedEventArgs e)
+        {
+            value = Double.Parse(result.Text) * -1;
+            result.Text = value.ToString();
+        }
+        private void PER_Click(object sender, RoutedEventArgs e)
+        {
+            value = Double.Parse(result.Text) / 100;
+            result.Text = value.ToString();
+        }
         //private void btn_ac_Click(object sender, RoutedEventArgs e)
         //{
         //    numone = 0;
