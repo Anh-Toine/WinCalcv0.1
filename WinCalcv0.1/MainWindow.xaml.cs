@@ -12,15 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace WinCalcv0._1
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    enum SelectedOperator
+    {
+        ADD,
+        SUBTRACT,
+        MULTIPLY,
+        DIVIDE
+    }
     public partial class MainWindow : Window
     {
         double value;
+
+        double lastValue;
+        double res;
         SelectedOperator selectedOperator;
 
         public MainWindow()
@@ -32,24 +41,22 @@ namespace WinCalcv0._1
             btn_per.Click += new RoutedEventHandler(PER_Click);
         }
 
-
-
-        public enum SelectedOperator
-        {
-            PLUS,
-            MINUS,
-            MULTIPLY,
-            DIVIDE
-        }
         //A single event handler
         private void commonnum_Handler(object sender,RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             string btncont = btn.Content.ToString();
-           
+            
             if(result.Text == "0")
             {
                 result.Text = btncont;
+            }
+            else if(btncont == ".")
+            {
+                if (!result.Text.Contains('.'))
+                {
+                    result.Text += ".";
+                }
             }
             else
             {
@@ -59,6 +66,10 @@ namespace WinCalcv0._1
 
         private void AC_Click(object sender, RoutedEventArgs e)
         {
+            value = 0.0;
+            lastValue = 0.0;
+            res = 0.0;
+            
             result.Text = "0";
         }
         private void PM_Click(object sender, RoutedEventArgs e)
@@ -72,18 +83,29 @@ namespace WinCalcv0._1
             result.Text = value.ToString();
         }
 
-        //Decimal point
-        private void btn_dec_Click(object sender, RoutedEventArgs e)
+        private void opt_Click(object sender, RoutedEventArgs e)
         {
-            
+            Button b = (Button)sender;
+            string @operator = b.Content.ToString();
+            switch (@operator)
+            {
+                case "+":
+                    selectedOperator = SelectedOperator.ADD;
+                    break;
+                case "-":
+                    selectedOperator = SelectedOperator.SUBTRACT;
+                    break;
+                case "*":
+                    selectedOperator = SelectedOperator.MULTIPLY;
+                    break;
+                case "/":
+                    selectedOperator = SelectedOperator.DIVIDE;
+                    break;
+            }
         }
+        private void equ_Click(object sender,RoutedEventArgs e)
+        {
 
-        //private void btn_ac_Click(object sender, RoutedEventArgs e)
-        //{
-        //    numone = 0;
-        //    numtwo = 0;
-        //    opt = "";
-        //    result.Text = "0";
-        //}
+        }
     }
 }

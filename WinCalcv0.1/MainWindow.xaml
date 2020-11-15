@@ -28,24 +28,26 @@
         <Button x:Name="btn_ac" Style="{StaticResource contbtn}" Content="AC" Grid.Column="0" Grid.Row="2" />
         <Button x:Name="btn_pm" Style="{StaticResource contbtn}" Content="+/-" Grid.Column="1" Grid.Row="2" />
         <Button x:Name="btn_per" Style="{StaticResource contbtn}" Content="%" Grid.Column="2" Grid.Row="2"  />
-        <Button x:Name="btn_div" Style="{StaticResource optbtn}" Content="/" Grid.Column="3" Grid.Row="2"  />
+        <Button x:Name="btn_div" Style="{StaticResource optbtn}" Content="/" Grid.Column="3" Grid.Row="2"  Click="opt_Click" />
         <!-- 7 8 9 * -->
         <Button x:Name="btn_7" Style="{StaticResource numberbtn}" Content="7" Grid.Column="0" Grid.Row="3" Click="commonnum_Handler"/>
         <Button x:Name="btn_8" Style="{StaticResource numberbtn}" Content="8" Grid.Column="1" Grid.Row="3" Click="commonnum_Handler"/>
         <Button x:Name="btn_9" Style="{StaticResource numberbtn}" Content="9" Grid.Column="2" Grid.Row="3" Click="commonnum_Handler"/>
-        <Button x:Name="btn_mul" Style="{StaticResource optbtn}" Content="*" Grid.Column="3" Grid.Row="3"  />
+        <Button x:Name="btn_mul" Style="{StaticResource optbtn}" Content="*" Grid.Column="3" Grid.Row="3"  Click="opt_Click" />
         <!-- 4 5 6 - -->
         <Button x:Name="btn_4" Style="{StaticResource numberbtn}" Content="4" Grid.Column="0" Grid.Row="4"  Click="commonnum_Handler"/>
         <Button x:Name="btn_5" Style="{StaticResource numberbtn}" Content="5" Grid.Column="1" Grid.Row="4"  Click="commonnum_Handler"/>
         <Button x:Name="btn_6" Style="{StaticResource numberbtn}" Content="6" Grid.Column="2" Grid.Row="4" Click="commonnum_Handler"/>
-        <Button x:Name="btn_min" Style="{StaticResource optbtn}" Content="-" Grid.Column="3" Grid.Row="4" />
+        <Button x:Name="btn_min" Style="{StaticResource optbtn}" Content="-" Grid.Column="3" Grid.Row="4" Click="opt_Click" />
         <!-- 3 2 1 + -->
         <Button x:Name="btn_3" Style="{StaticResource numberbtn}" Content="3" Grid.Column="0" Grid.Row="5" Click="commonnum_Handler"/>
         <Button x:Name="btn_2" Style="{StaticResource numberbtn}" Content="2" Grid.Column="1" Grid.Row="5" Click="commonnum_Handler"/>
         <Button x:Name="btn_1" Style="{StaticResource numberbtn}" Content="1" Grid.Column="2" Grid.Row="5"  Click="commonnum_Handler"/>
-        <Button x:Name="btn_plu" Style="{StaticResource optbtn}" Content="+" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2"/>
+        <Button x:Name="btn_plu" Style="{StaticResource optbtn}" Content="+" Grid.Column="3" Grid.Row="5"  Click="opt_Click"/>
+        
         <!-- 0 . -->
         <Button x:Name="btn_0" Style="{StaticResource numberbtn}" Content="0" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Click="commonnum_Handler" />
-        <Button x:Name="btn_dec" Style="{StaticResource numberbtn}" Content="." Grid.Column="2" Grid.Row="6" Click="btn_dec_Click"/>
+        <Button x:Name="btn_dec" Style="{StaticResource numberbtn}" Content="." Grid.Column="2" Grid.Row="6" Click="commonnum_Handler"/>
+        <Button x:Name="btn_equ" Style="{StaticResource optbtn}" Content="="  Grid.Column="3" Grid.Row="6"  Click="equ_Click"/>
     </Grid>
 </Window>
