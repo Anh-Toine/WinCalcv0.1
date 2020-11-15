@@ -46,7 +46,7 @@ namespace WinCalcv0._1
         {
             Button btn = (Button)sender;
             string btncont = btn.Content.ToString();
-            
+           
             if(result.Text == "0")
             {
                 result.Text = btncont;
@@ -71,6 +71,13 @@ namespace WinCalcv0._1
             value = Double.Parse(result.Text) / 100;
             result.Text = value.ToString();
         }
+
+        //Decimal point
+        private void btn_dec_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         //private void btn_ac_Click(object sender, RoutedEventArgs e)
         //{
         //    numone = 0;

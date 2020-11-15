@@ -46,6 +46,6 @@
         <Button x:Name="btn_plu" Style="{StaticResource optbtn}" Content="+" Grid.Column="3" Grid.Row="5" Grid.RowSpan="2"/>
         <!-- 0 . -->
         <Button x:Name="btn_0" Style="{StaticResource numberbtn}" Content="0" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Click="commonnum_Handler" />
-        <Button x:Name="btn_dec" Style="{StaticResource numberbtn}" Content="." Grid.Column="2" Grid.Row="6" />
+        <Button x:Name="btn_dec" Style="{StaticResource numberbtn}" Content="." Grid.Column="2" Grid.Row="6" Click="btn_dec_Click"/>
     </Grid>
 </Window>
