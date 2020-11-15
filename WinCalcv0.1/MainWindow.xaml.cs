@@ -42,7 +42,7 @@ namespace WinCalcv0._1
         }
 
         //A single event handler
-        private void commonnum_Handler(object sender,RoutedEventArgs e)
+        private void Commonnum_Handler(object sender,RoutedEventArgs e)
         {
             Button btn = (Button)sender;
             string btncont = btn.Content.ToString();
@@ -83,7 +83,7 @@ namespace WinCalcv0._1
             result.Text = value.ToString();
         }
 
-        private void opt_Click(object sender, RoutedEventArgs e)
+        private void Opt_Click(object sender, RoutedEventArgs e)
         {
             Button b = (Button)sender;
             string @operator = b.Content.ToString();
@@ -103,9 +103,11 @@ namespace WinCalcv0._1
                     break;
             }
         }
-        private void equ_Click(object sender,RoutedEventArgs e)
+        private void Equ_Click(object sender,RoutedEventArgs e)
         {
 
         }
+
+
     }
 }
