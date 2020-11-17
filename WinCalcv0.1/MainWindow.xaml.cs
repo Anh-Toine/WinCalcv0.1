@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Text.RegularExpressions;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TSCalc;
+
 namespace WinCalcv0._1
 {
     /// <summary>
@@ -31,7 +34,7 @@ namespace WinCalcv0._1
         double lastValue;
         double res;
         SelectedOperator selectedOperator;
-
+        Regex isnum = new Regex(@"\d+");
         public MainWindow()
         {
 
@@ -39,6 +42,7 @@ namespace WinCalcv0._1
             btn_ac.Click += new RoutedEventHandler(AC_Click);
             btn_pm.Click += new RoutedEventHandler(PM_Click);
             btn_per.Click += new RoutedEventHandler(PER_Click);
+            btn_equ.Click += new RoutedEventHandler(Equ_Click);
         }
 
         //A single event handler
@@ -47,23 +51,27 @@ namespace WinCalcv0._1
             Button btn = (Button)sender;
             string btncont = btn.Content.ToString();
             
-            if(result.Text == "0")
+            if (isnum.IsMatch(btncont))
             {
-                result.Text = btncont;
-            }
-            else if(btncont == ".")
-            {
-                if (!result.Text.Contains('.'))
+                if(result.Text == "0")
                 {
-                    result.Text += ".";
+                    result.Text = btncont;
+                }
+                else
+                {
+                    result.Text += btncont;
                 }
             }
             else
             {
-                result.AppendText(btncont);
+                if (!result.Text.Contains('.'))
+                {
+                    result.AppendText(".");
+                }
             }
+            value = Double.Parse(result.Text);
+            Console.WriteLine(value);
         }
-
         private void AC_Click(object sender, RoutedEventArgs e)
         {
             value = 0.0;
@@ -83,14 +91,13 @@ namespace WinCalcv0._1
             result.Text = value.ToString();
         }
 
-        private void Opt_Click(object sender, RoutedEventArgs e)
+        private SelectedOperator Operator_Handler(string @operator)
         {
-            Button b = (Button)sender;
-            string @operator = b.Content.ToString();
             switch (@operator)
             {
                 case "+":
                     selectedOperator = SelectedOperator.ADD;
+                    //Secondnum_Handler();
                     break;
                 case "-":
                     selectedOperator = SelectedOperator.SUBTRACT;
@@ -102,12 +109,19 @@ namespace WinCalcv0._1
                     selectedOperator = SelectedOperator.DIVIDE;
                     break;
             }
+            return selectedOperator;
         }
-        private void Equ_Click(object sender,RoutedEventArgs e)
+        private void Secondnum_Handler()
         {
+            if(value == null)
+            {
 
+            }
         }
-
+        private void Equ_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
 
     }
 }

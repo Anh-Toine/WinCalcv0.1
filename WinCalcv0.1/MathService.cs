@@ -8,21 +8,21 @@ namespace TSCalc
 {
     static class MathService
     {
-        public double Sum()
+        public static double Sum(double num1,double num2)
         {
-
+            return num1 + num2;
         }
-        public double Difference()
+        public static double Subtract(double num1,double num2)
         {
-
+            return num1 - num2;
         }
-        public double Multiply()
+        public static double Multiply(double num1, double num2)
         {
-
+            return num1 * num2;
         }
-        public double Division()
+        public static double Division(double num1,double num2)
         {
-
+            return num1 / num2;
         }
     }   
 }
