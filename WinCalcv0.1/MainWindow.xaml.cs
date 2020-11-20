@@ -29,10 +29,10 @@ namespace WinCalcv0._1
     }
     public partial class MainWindow : Window
     {
-        double value;
+        double? value  = 0.0;
 
-        double lastValue;
-        double res;
+        double? lastValue = 0.0;
+        double? res;
         SelectedOperator selectedOperator;
         Regex isnum = new Regex(@"\d+");
         public MainWindow()
@@ -50,27 +50,26 @@ namespace WinCalcv0._1
         {
             Button btn = (Button)sender;
             string btncont = btn.Content.ToString();
-            
-            if (isnum.IsMatch(btncont))
-            {
-                if(result.Text == "0")
+                
+                if (isnum.IsMatch(btncont))
                 {
-                    result.Text = btncont;
+                    if (result.Text == "0")
+                    {
+                        result.Text = btncont;
+                    }
+                    else
+                    {
+                        result.Text += btncont;
+                    }
                 }
                 else
                 {
-                    result.Text += btncont;
+                    if (!result.Text.Contains('.'))
+                    {
+                        result.AppendText(".");
+                    }
                 }
-            }
-            else
-            {
-                if (!result.Text.Contains('.'))
-                {
-                    result.AppendText(".");
-                }
-            }
-            value = Double.Parse(result.Text);
-            Console.WriteLine(value);
+                lastValue = Double.Parse(result.Text);
         }
         private void AC_Click(object sender, RoutedEventArgs e)
         {
@@ -91,31 +90,52 @@ namespace WinCalcv0._1
             result.Text = value.ToString();
         }
 
-        private SelectedOperator Operator_Handler(string @operator)
+        private void Operator_Handler(object sender, RoutedEventArgs e)
         {
-            switch (@operator)
+            Button b = (Button)sender;
+            switch (b.Content.ToString())
             {
                 case "+":
                     selectedOperator = SelectedOperator.ADD;
-                    //Secondnum_Handler();
+                    Secondnum_Handler(selectedOperator);
                     break;
                 case "-":
                     selectedOperator = SelectedOperator.SUBTRACT;
+                    Secondnum_Handler(selectedOperator);
                     break;
                 case "*":
                     selectedOperator = SelectedOperator.MULTIPLY;
+                    Secondnum_Handler(selectedOperator);
                     break;
                 case "/":
                     selectedOperator = SelectedOperator.DIVIDE;
+                    Secondnum_Handler(selectedOperator);
                     break;
             }
-            return selectedOperator;
         }
-        private void Secondnum_Handler()
+        private void Secondnum_Handler(SelectedOperator so) 
         {
-            if(value == null)
+            switch (so)
             {
-
+                case SelectedOperator.ADD:
+                    res = lastValue + value;
+                    break;
+                case SelectedOperator.SUBTRACT:
+                    res = lastValue - value;
+                    break;
+                case SelectedOperator.MULTIPLY:
+                    res = lastValue * value;
+                    break;
+                case SelectedOperator.DIVIDE:
+                    if (value == 0)
+                    {
+                        MessageBox.Show("You can't divide a number by zero, are you insane??");
+                    }
+                    else
+                    {
+                        res = lastValue / value;
+                    }
+                    break;
             }
         }
         private void Equ_Click(object sender, RoutedEventArgs e)
