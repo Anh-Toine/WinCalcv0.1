@@ -4,10 +4,26 @@
              xmlns:local="clr-namespace:WinCalcv0._1"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style x:Key="btn" TargetType="Button">
-            <Setter Property="Background" Value="Coral"/>
-            <Setter Property="Margin" Value="9"/>
-            <Setter Property="FontSize" Value="20"/>
+        <Style x:Key="numberbtn" TargetType="Button">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="AntiqueWhite"/>
+
+            <Setter Property="Margin" Value="7"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <Style x:Key="optbtn" TargetType="Button">
+            <Setter Property="Background" Value="Orange"/>
+            <Setter Property="Foreground" Value="AntiqueWhite"/>
+           
+            <Setter Property="Margin" Value="7"/>
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        <Style x:Key="contbtn" TargetType="Button">
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Foreground" Value="DarkGray"/>
+
+            <Setter Property="Margin" Value="7"/>
+            <Setter Property="FontSize" Value="30"/>
         </Style>
     </Application.Resources>
 </Application>
